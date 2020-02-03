@@ -75,4 +75,10 @@ public class UserDaoDatabaseImpl implements UserDao {
 
         return (Usuari) criteria.uniqueResult();
     }
+
+    @Override
+    public void persist(Usuari user) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.persist(user);
+    }
 }

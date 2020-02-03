@@ -1,9 +1,9 @@
 package com.esliceu.controller;
 
+import com.esliceu.model.Observacion;
 import com.esliceu.model.Planeta;
 import com.esliceu.model.Satelite;
 import com.esliceu.model.Usuari;
-import com.esliceu.model.Observaciones;
 import com.esliceu.service.PlanetaService;
 import com.esliceu.service.SateliteService;
 import com.esliceu.service.UserService;
@@ -50,14 +50,14 @@ public class PlanetaFormController {
         model.addAttribute("satelites", sateliteService.getAll());
         model.addAttribute("planeta", planeta);
 
-        Observaciones observaciones = null;
-        for (Observaciones toCheck : planeta.getObservaciones()) {
+        Observacion observacion = null;
+        for (Observacion toCheck : planeta.getObservaciones()) {
 
             if (toCheck.getUsuari().getIdusuari().equals(idUser) && toCheck.getPlanetaUsuariPlanetas().getIdplaneta().equals(idplaneta)) {
-                observaciones = toCheck;
+                observacion = toCheck;
             }
         }
-        model.addAttribute("observacion", observaciones);
+        model.addAttribute("observacion", observacion);
 
         return "planetaForm";
     }
@@ -104,16 +104,16 @@ public class PlanetaFormController {
             Usuari user = userService.findById((Integer) httpSession.getAttribute("userId"));
 
             if (idplaneta != null) {
-                Observaciones comentarioToLeave = null;
+                Observacion comentarioToLeave = null;
                 // Comprovamos primero si hay algun comentario ya escrito entre este usuario y este planeta
-                for (Observaciones observaciones : planeta.getObservaciones()) {
+                for (Observacion observaciones : planeta.getObservaciones()) {
                     if (observaciones.getUsuari().getIdusuari().equals(user.getIdusuari()) && observaciones.getPlanetaUsuariPlanetas().getIdplaneta().equals(idplaneta)) {
                         comentarioToLeave = observaciones;
                     }
                 }
 
                 if (comentarioToLeave == null) {
-                    comentarioToLeave = new Observaciones();
+                    comentarioToLeave = new Observacion();
                     comentarioToLeave.setUsuari(user);
                     comentarioToLeave.setPlanetaUsuariPlanetas(planeta);
                     if (user.getComentariosObservaciones() == null) {
@@ -126,8 +126,8 @@ public class PlanetaFormController {
             } else {
                 // Nos ahorramos la comprovacion anteiror ya que significa que es un nuevo planeta y no tendra ningun comentario
 
-                Observaciones observaciones = new Observaciones();
-                List<Observaciones> lista = new LinkedList<>();
+                Observacion observaciones = new Observacion();
+                List<Observacion> lista = new LinkedList<>();
                 observaciones.setUsuari(user);
                 observaciones.setPlanetaUsuariPlanetas(planeta);
                 observaciones.setComentario(observacion);

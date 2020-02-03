@@ -33,7 +33,7 @@ public class Planeta {
     private List<Satelite> satelites;
 
     @OneToMany(mappedBy = "planetaUsuariPlanetas", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Observaciones> observaciones;
+    private List<Observacion> observaciones;
 
 
     public Planeta() {
@@ -80,11 +80,11 @@ public class Planeta {
         this.satelites = satelites;
     }
 
-    public List<Observaciones> getObservaciones() {
+    public List<Observacion> getObservaciones() {
         return observaciones;
     }
 
-    public void setObservaciones(List<Observaciones> observaciones) {
+    public void setObservaciones(List<Observacion> observaciones) {
         this.observaciones = observaciones;
     }
 
@@ -115,4 +115,3 @@ public class Planeta {
         return Objects.hash(idplaneta, nom, massa, habitable, satelites, observaciones);
     }
 }
-

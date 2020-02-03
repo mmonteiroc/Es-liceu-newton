@@ -1,8 +1,9 @@
 package com.esliceu.controller;
 
+import com.esliceu.model.Observacion;
 import com.esliceu.model.Planeta;
 import com.esliceu.model.Usuari;
-import com.esliceu.model.Observaciones;
+import com.esliceu.service.ObservacionService;
 import com.esliceu.service.PlanetaService;
 import com.esliceu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class ComentariosUsuarioController {
     private UserService userService;
     @Autowired
     private PlanetaService planetaService;
+    @Autowired
+    private ObservacionService observacionService;
 
 
     @GetMapping("/planetas/comentarios")
@@ -52,9 +55,9 @@ public class ComentariosUsuarioController {
         Planeta planeta = planetaService.getById(idPlaneta);
         Usuari user = userService.findById(idUsuario);
 
-        Observaciones toDelete = null;
+        Observacion toDelete = null;
 
-        for (Observaciones checkToDelete : planeta.getObservaciones()) {
+        for (Observacion checkToDelete : planeta.getObservaciones()) {
             if (checkToDelete.getComentario().equalsIgnoreCase(comentario) && checkToDelete.getUsuari().getIdusuari().equals(idUsuario) && checkToDelete.getPlanetaUsuariPlanetas().getIdplaneta().equals(idPlaneta)) {
 
                 System.out.println("#############################");
@@ -63,11 +66,13 @@ public class ComentariosUsuarioController {
             }
         }
 
-
-        toDelete.setUsuari(null);
-        toDelete.setPlanetaUsuariPlanetas(null);
         planeta.getObservaciones().remove(toDelete);
-        planetaService.insertOrUpdate(planeta);
+        user.getComentariosObservaciones().remove(toDelete);
+
+        planetaService.persist(planeta);
+        userService.persist(user);
+        observacionService.delete(toDelete);
+
         return new RedirectView("/planetas/comentarios");
     }
 

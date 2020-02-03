@@ -38,10 +38,23 @@ public class PlanetaDaoDatabaseImpl implements PlanetaDao {
     @Override
     public List<Planeta> findAll() {
 
+
+
+
         /*
          * Iniciamos la sessión (La cogemos de la hibernate config que creamoszx)
          * */
         Session conexionDatabase = sessionFactory.getCurrentSession();
+
+
+
+        /*
+         * MANERA SIN CRITERIA
+         *
+         * conexionDatabase.createQuery("from com.esliceu.model.Planeta");
+         *
+         * */
+
 
         /*
          * Nos permite hacer consultas con el objeto criteria
@@ -77,8 +90,8 @@ public class PlanetaDaoDatabaseImpl implements PlanetaDao {
     @Override
     public void insertOrUpdate(Planeta planeta) {
         Session currentSession = sessionFactory.getCurrentSession();
-        currentSession.persist(planeta);
         currentSession.saveOrUpdate(planeta);
+
     }
 
     @Override

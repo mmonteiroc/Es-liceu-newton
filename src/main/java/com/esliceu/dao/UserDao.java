@@ -19,4 +19,6 @@ public interface UserDao {
     Usuari validate(String username, String passwd);
 
     Usuari findByUsername(String username);
+
+    void persist(Usuari user);
 }

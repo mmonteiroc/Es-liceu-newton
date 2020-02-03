@@ -38,4 +38,8 @@ public class UserService {
     public Usuari finByUsername(String username) {
         return userDao.findByUsername(username);
     }
+
+    public void persist(Usuari user) {
+        userDao.persist(user);
+    }
 }

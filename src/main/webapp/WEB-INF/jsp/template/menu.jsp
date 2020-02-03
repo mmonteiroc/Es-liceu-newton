@@ -24,7 +24,7 @@
                     <a class="nav-link" href="/planetaForm">Añadir planeta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/planetas/comentarios">Ver todos tus observaciones</a>
+                    <a class="nav-link" href="/planetas/comentarios">Ver todos tus observacion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/addSatelite">Añadir satelite</a>

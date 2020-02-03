@@ -33,7 +33,7 @@ public class Usuari {
     private String cognoms;
 
     @OneToMany(mappedBy = "usuari", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Observaciones> comentariosObservaciones;
+    private List<Observacion> comentariosObservaciones;
 
     public Usuari() {
     }
@@ -78,11 +78,11 @@ public class Usuari {
         this.cognoms = cognoms;
     }
 
-    public List<Observaciones> getComentariosObservaciones() {
+    public List<Observacion> getComentariosObservaciones() {
         return comentariosObservaciones;
     }
 
-    public void setComentariosObservaciones(List<Observaciones> observaciones) {
+    public void setComentariosObservaciones(List<Observacion> observaciones) {
         this.comentariosObservaciones = observaciones;
     }
 

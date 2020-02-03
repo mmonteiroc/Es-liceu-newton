@@ -1,7 +1,10 @@
 package com.esliceu.controller;
 
+import com.esliceu.model.Observacion;
 import com.esliceu.model.Planeta;
+import com.esliceu.service.ObservacionService;
 import com.esliceu.service.PlanetaService;
+import com.esliceu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,7 +29,10 @@ import java.util.Locale;
 public class PlanetasController {
     @Autowired
     private PlanetaService planetaService;
-
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ObservacionService observacionService;
 
     @GetMapping("/planetas")
     @Transactional
@@ -43,6 +50,15 @@ public class PlanetasController {
     public RedirectView deletePlaneta(@RequestParam("idplaneta") Integer idPlaneta) {
         Planeta planeta = planetaService.getById(idPlaneta);
 
+
+        List<Observacion> observacions = planeta.getObservaciones();
+        List<Observacion> copyObservaciones = new LinkedList<>(observacions);
+
+        for (Observacion observacion : copyObservaciones) {
+            observacion.getUsuari().getComentariosObservaciones().remove(observacion);
+            planeta.getObservaciones().remove(observacion);
+            observacionService.delete(observacion);
+        }
 
         planetaService.deletePlaneta(planeta);
 
