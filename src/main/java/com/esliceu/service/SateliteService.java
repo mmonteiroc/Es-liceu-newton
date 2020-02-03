@@ -27,4 +27,8 @@ public class SateliteService {
     public Satelite findById(Integer id) {
         return sateliteDao.getById(id);
     }
+
+    public void insertOrUpdate(Satelite satelite) {
+        sateliteDao.insertOrUpdate(satelite);
+    }
 }

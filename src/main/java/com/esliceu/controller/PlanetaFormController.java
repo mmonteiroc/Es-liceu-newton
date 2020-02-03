@@ -3,7 +3,7 @@ package com.esliceu.controller;
 import com.esliceu.model.Planeta;
 import com.esliceu.model.Satelite;
 import com.esliceu.model.Usuari;
-import com.esliceu.model.UsuariPlaneta;
+import com.esliceu.model.Observaciones;
 import com.esliceu.service.PlanetaService;
 import com.esliceu.service.SateliteService;
 import com.esliceu.service.UserService;
@@ -50,14 +50,14 @@ public class PlanetaFormController {
         model.addAttribute("satelites", sateliteService.getAll());
         model.addAttribute("planeta", planeta);
 
-        UsuariPlaneta usuariPlaneta = null;
-        for (UsuariPlaneta toCheck : planeta.getUsuariPlanetas()) {
+        Observaciones observaciones = null;
+        for (Observaciones toCheck : planeta.getObservaciones()) {
 
             if (toCheck.getUsuari().getIdusuari().equals(idUser) && toCheck.getPlanetaUsuariPlanetas().getIdplaneta().equals(idplaneta)) {
-                usuariPlaneta = toCheck;
+                observaciones = toCheck;
             }
         }
-        model.addAttribute("observacion", usuariPlaneta);
+        model.addAttribute("observacion", observaciones);
 
         return "planetaForm";
     }
@@ -104,35 +104,35 @@ public class PlanetaFormController {
             Usuari user = userService.findById((Integer) httpSession.getAttribute("userId"));
 
             if (idplaneta != null) {
-                UsuariPlaneta comentarioToLeave = null;
+                Observaciones comentarioToLeave = null;
                 // Comprovamos primero si hay algun comentario ya escrito entre este usuario y este planeta
-                for (UsuariPlaneta usuariPlaneta : planeta.getUsuariPlanetas()) {
-                    if (usuariPlaneta.getUsuari().getIdusuari().equals(user.getIdusuari()) && usuariPlaneta.getPlanetaUsuariPlanetas().getIdplaneta().equals(idplaneta)) {
-                        comentarioToLeave = usuariPlaneta;
+                for (Observaciones observaciones : planeta.getObservaciones()) {
+                    if (observaciones.getUsuari().getIdusuari().equals(user.getIdusuari()) && observaciones.getPlanetaUsuariPlanetas().getIdplaneta().equals(idplaneta)) {
+                        comentarioToLeave = observaciones;
                     }
                 }
 
                 if (comentarioToLeave == null) {
-                    comentarioToLeave = new UsuariPlaneta();
+                    comentarioToLeave = new Observaciones();
                     comentarioToLeave.setUsuari(user);
                     comentarioToLeave.setPlanetaUsuariPlanetas(planeta);
-                    if (user.getComentariosUsuariPlanetas() == null) {
-                        user.setComentariosUsuariPlanetas(new LinkedList<>());
+                    if (user.getComentariosObservaciones() == null) {
+                        user.setComentariosObservaciones(new LinkedList<>());
                     }
-                    user.getComentariosUsuariPlanetas().add(comentarioToLeave);
+                    user.getComentariosObservaciones().add(comentarioToLeave);
                 }
                 comentarioToLeave.setComentario(observacion);
 
             } else {
                 // Nos ahorramos la comprovacion anteiror ya que significa que es un nuevo planeta y no tendra ningun comentario
 
-                UsuariPlaneta usuariPlaneta = new UsuariPlaneta();
-                List<UsuariPlaneta> lista = new LinkedList<>();
-                usuariPlaneta.setUsuari(user);
-                usuariPlaneta.setPlanetaUsuariPlanetas(planeta);
-                usuariPlaneta.setComentario(observacion);
-                lista.add(usuariPlaneta);
-                planeta.setUsuariPlanetas(lista);
+                Observaciones observaciones = new Observaciones();
+                List<Observaciones> lista = new LinkedList<>();
+                observaciones.setUsuari(user);
+                observaciones.setPlanetaUsuariPlanetas(planeta);
+                observaciones.setComentario(observacion);
+                lista.add(observaciones);
+                planeta.setObservaciones(lista);
             }
         }
 

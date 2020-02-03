@@ -42,7 +42,7 @@
                         style="width:80%">
                     <option></option>
                     <c:forEach var="satelite" items="${satelites}">
-                        <option value="${satelite.idsatelit}" ${satelite.planeta.idplaneta==planeta.idplaneta?"selected":""}  >${satelite.nom}</option>
+                        <option value="${satelite.idsatelit}" ${(satelite.planeta.idplaneta==planeta.idplaneta && planeta!=null)?"selected":""}  >${satelite.nom}</option>
                     </c:forEach>
                 </select>
 

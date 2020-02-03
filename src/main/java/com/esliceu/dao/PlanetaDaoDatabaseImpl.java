@@ -1,7 +1,6 @@
 package com.esliceu.dao;
 
 import com.esliceu.model.Planeta;
-import com.esliceu.model.UsuariPlaneta;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,6 +77,7 @@ public class PlanetaDaoDatabaseImpl implements PlanetaDao {
     @Override
     public void insertOrUpdate(Planeta planeta) {
         Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.persist(planeta);
         currentSession.saveOrUpdate(planeta);
     }
 

@@ -2,7 +2,7 @@ package com.esliceu.service;
 
 import com.esliceu.dao.PlanetaDao;
 import com.esliceu.model.Planeta;
-import com.esliceu.model.UsuariPlaneta;
+import com.esliceu.model.Observaciones;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,13 +27,13 @@ public class PlanetaService {
     public void deletePlaneta(Planeta planeta) {
 
 
-        List<UsuariPlaneta> allObservacions = planeta.getUsuariPlanetas();
+        List<Observaciones> allObservacions = planeta.getObservaciones();
 
-        for (UsuariPlaneta observacion : allObservacions) {
+        for (Observaciones observacion : allObservacions) {
             observacion.setPlanetaUsuariPlanetas(null);
         }
 
-        planeta.setUsuariPlanetas(null);
+        planeta.setObservaciones(null);
         planetaDao.persist(planeta);
         planetaDao.delete(planeta);
     }

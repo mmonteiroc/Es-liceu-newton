@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/planetas/comentarios">Ver todos tus observaciones</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addSatelite">Añadir satelite</a>
+                </li>
             </c:if>
         </ul>
 

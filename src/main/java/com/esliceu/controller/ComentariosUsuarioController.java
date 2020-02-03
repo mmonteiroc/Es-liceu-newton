@@ -2,7 +2,7 @@ package com.esliceu.controller;
 
 import com.esliceu.model.Planeta;
 import com.esliceu.model.Usuari;
-import com.esliceu.model.UsuariPlaneta;
+import com.esliceu.model.Observaciones;
 import com.esliceu.service.PlanetaService;
 import com.esliceu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class ComentariosUsuarioController {
         Usuari user = userService.findById((Integer) httpSession.getAttribute("userId"));
 
         model.addAttribute("usuario", user);
-        model.addAttribute("Comentarios", user.getComentariosUsuariPlanetas());
+        model.addAttribute("Comentarios", user.getComentariosObservaciones());
 
         return "comentariosUsuario";
     }
@@ -52,9 +52,9 @@ public class ComentariosUsuarioController {
         Planeta planeta = planetaService.getById(idPlaneta);
         Usuari user = userService.findById(idUsuario);
 
-        UsuariPlaneta toDelete = null;
+        Observaciones toDelete = null;
 
-        for (UsuariPlaneta checkToDelete : planeta.getUsuariPlanetas()) {
+        for (Observaciones checkToDelete : planeta.getObservaciones()) {
             if (checkToDelete.getComentario().equalsIgnoreCase(comentario) && checkToDelete.getUsuari().getIdusuari().equals(idUsuario) && checkToDelete.getPlanetaUsuariPlanetas().getIdplaneta().equals(idPlaneta)) {
 
                 System.out.println("#############################");
@@ -63,7 +63,10 @@ public class ComentariosUsuarioController {
             }
         }
 
-        planeta.getUsuariPlanetas().remove(toDelete);
+
+        toDelete.setUsuari(null);
+        toDelete.setPlanetaUsuariPlanetas(null);
+        planeta.getObservaciones().remove(toDelete);
         planetaService.insertOrUpdate(planeta);
         return new RedirectView("/planetas/comentarios");
     }

@@ -33,7 +33,7 @@ public class Usuari {
     private String cognoms;
 
     @OneToMany(mappedBy = "usuari", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<UsuariPlaneta> comentariosUsuariPlanetas;
+    private List<Observaciones> comentariosObservaciones;
 
     public Usuari() {
     }
@@ -78,12 +78,12 @@ public class Usuari {
         this.cognoms = cognoms;
     }
 
-    public List<UsuariPlaneta> getComentariosUsuariPlanetas() {
-        return comentariosUsuariPlanetas;
+    public List<Observaciones> getComentariosObservaciones() {
+        return comentariosObservaciones;
     }
 
-    public void setComentariosUsuariPlanetas(List<UsuariPlaneta> usuariPlaneta) {
-        this.comentariosUsuariPlanetas = usuariPlaneta;
+    public void setComentariosObservaciones(List<Observaciones> observaciones) {
+        this.comentariosObservaciones = observaciones;
     }
 
     @Override
@@ -100,6 +100,6 @@ public class Usuari {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idusuari, username, password, nom, cognoms, comentariosUsuariPlanetas);
+        return Objects.hash(idusuari, username, password, nom, cognoms, comentariosObservaciones);
     }
 }

@@ -22,40 +22,43 @@
 <body>
 <c:import url="template/menu.jsp"></c:import>
 
-<h1>Todos los planetas</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Nom</th>
-        <th>Satelites</th>
-        <th>Modificar</th>
-        <th>Eliminar</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="planeta" items="${planetas}">
+<main class="container">
+    <h1 class="mb-5">Todos los planetas</h1>
+
+    <table>
+        <thead>
         <tr>
-            <td>
-                    ${planeta.nom}
-            </td>
-            <th>
-                <c:forEach var="satelite" items="${planeta.satelites}">
-                    ${satelite.nom}
-                </c:forEach>
-            </th>
-            <td><a href="/planetaForm/${planeta.idplaneta}">Modificar</a></td>
-            <td>
-                <form action="/deletePlaneta" method="post">
-                    <input type="hidden" name="idplaneta" value="${planeta.idplaneta}">
-                    <input type="submit" value="Delete">
-                </form>
-            </td>
+            <th>Nom</th>
+            <th>Satelites</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
         </tr>
-    </c:forEach>
-    </tbody>
+        </thead>
+        <tbody>
+        <c:forEach var="planeta" items="${planetas}">
+            <tr>
+                <td>
+                        ${planeta.nom}
+                </td>
+                <td>
+                    <c:forEach var="satelite" items="${planeta.satelites}">
+                        ${satelite.nom}
+                    </c:forEach>
+                </td>
+                <td><a href="/planetaForm/${planeta.idplaneta}">Modificar</a></td>
+                <td>
+                    <form action="/deletePlaneta" method="post">
+                        <input type="hidden" name="idplaneta" value="${planeta.idplaneta}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
 
 
-</table>
+    </table>
+</main>
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"

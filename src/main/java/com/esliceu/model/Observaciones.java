@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "usuari_has_planeta")
-public class UsuariPlaneta implements Serializable {
+public class Observaciones implements Serializable {
 
     @Id
     @ManyToOne
@@ -67,7 +67,7 @@ public class UsuariPlaneta implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsuariPlaneta that = (UsuariPlaneta) o;
+        Observaciones that = (Observaciones) o;
         return Objects.equals(usuari, that.usuari) &&
                 Objects.equals(planetaUsuariPlanetas, that.planetaUsuariPlanetas) &&
                 Objects.equals(comentario, that.comentario);
