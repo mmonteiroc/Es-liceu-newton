@@ -1,5 +1,6 @@
 package com.esliceu.model;
 
+
 import javax.persistence.*;
 
 /**

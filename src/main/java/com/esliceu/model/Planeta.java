@@ -1,5 +1,9 @@
 package com.esliceu.model;
 
+
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +17,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "planeta")
+@Audited
 public class Planeta {
 
     @Id
@@ -29,9 +34,11 @@ public class Planeta {
     @Column(name = "habitable")
     private boolean habitable;
 
+    @NotAudited
     @OneToMany(mappedBy = "planeta", orphanRemoval = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Satelite> satelites;
 
+    @NotAudited
     @OneToMany(mappedBy = "planetaUsuariPlanetas", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Observacion> observaciones;
 
