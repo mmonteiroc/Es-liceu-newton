@@ -1,12 +1,12 @@
 package com.esliceu.model;
 
-
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.NotAudited;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+
 
 /**
  * Code created by: mmonteirocl
