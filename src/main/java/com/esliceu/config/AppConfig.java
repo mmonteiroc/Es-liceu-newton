@@ -18,7 +18,6 @@ import org.springframework.web.servlet.view.JstlView;
 @PropertySource("classpath:/file.properties")
 public class AppConfig implements WebMvcConfigurer {
 
-
     @Bean
     public InternalResourceViewResolver resolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
