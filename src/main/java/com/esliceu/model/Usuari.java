@@ -98,6 +98,7 @@ public class Usuari {
                 Objects.equals(cognoms, usuari.cognoms);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(idusuari, username, password, nom, cognoms, comentariosObservaciones);
