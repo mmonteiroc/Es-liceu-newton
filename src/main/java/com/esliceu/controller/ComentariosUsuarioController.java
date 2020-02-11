@@ -73,7 +73,7 @@ public class ComentariosUsuarioController {
         userService.persist(user);
         observacionService.delete(toDelete);
 
-        return new RedirectView("/planetas/comentarios");
+        return new RedirectView("../planetas/comentarios");
     }
 
 }

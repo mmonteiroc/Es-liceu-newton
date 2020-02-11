@@ -23,7 +23,7 @@ public class LogedUserFilter implements HandlerInterceptor {
 
             return true;
         } else {
-            response.sendRedirect("/login");
+            response.sendRedirect("login");
             return false;
         }
 

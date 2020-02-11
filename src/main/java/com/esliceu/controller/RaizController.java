@@ -15,6 +15,6 @@ import org.springframework.web.servlet.view.RedirectView;
 public class RaizController {
     @GetMapping("/")
     public RedirectView prova() {
-        return new RedirectView("/login");
+        return new RedirectView("./login");
     }
 }

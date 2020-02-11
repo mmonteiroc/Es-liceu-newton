@@ -48,11 +48,11 @@ public class LoginController {
             httpSession.setAttribute("username", user.getNom() + " " + user.getCognoms());
             httpSession.setMaxInactiveInterval(60 * 5); // 5 mins
 
-            redirectView = new RedirectView("/planetas");
+            redirectView = new RedirectView("planetas");
         } else {
 
             model.addAttribute("errorValidation", true);
-            redirectView = new RedirectView("/login");
+            redirectView = new RedirectView("login");
         }
 
         return redirectView;

@@ -17,11 +17,17 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet"/>
 </head>
 <body>
-<c:import url="template/menu.jsp"></c:import>
+
+<c:if test="${planeta==null}">
+    <c:import url="template/menu.jsp"></c:import>
+</c:if>
+<c:if test="${planeta!=null}">
+    <c:import url="template/menu2DotsOut.jsp"></c:import>
+</c:if>
 
 <main class="container">
 
-    <form action="/savePlaneta" method="post">
+    <form action="${planeta!=null?".":""}./savePlaneta" method="post">
         <div class="form-row">
             <input type="hidden" name="idplaneta" value="${planeta.idplaneta}">
 

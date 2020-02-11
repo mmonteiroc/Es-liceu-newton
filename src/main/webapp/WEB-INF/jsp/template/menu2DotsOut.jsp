@@ -18,16 +18,16 @@
             </c:if>
             <c:if test="${username!=null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="planetas">Todos los planetas</a>
+                    <a class="nav-link" href="../planetas">Todos los planetas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="planetaForm">Añadir planeta</a>
+                    <a class="nav-link" href="../planetaForm">Añadir planeta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="planetas/comentarios">Ver todos tus observacion</a>
+                    <a class="nav-link" href="../planetas/comentarios">Ver todos tus observacion</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="addSatelite">Añadir satelite</a>
+                    <a class="nav-link" href="../addSatelite">Añadir satelite</a>
                 </li>
             </c:if>
         </ul>

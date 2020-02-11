@@ -62,7 +62,7 @@ public class PlanetasController {
 
         planetaService.deletePlaneta(planeta);
 
-        return new RedirectView("/planetas");
+        return new RedirectView("planetas");
     }
 
 

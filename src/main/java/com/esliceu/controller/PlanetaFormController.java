@@ -138,6 +138,6 @@ public class PlanetaFormController {
 
 
         planetaService.insertOrUpdate(planeta);
-        return new RedirectView("/planetas");
+        return new RedirectView("planetas");
     }
 }

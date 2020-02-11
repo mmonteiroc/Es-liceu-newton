@@ -45,9 +45,9 @@
                         ${satelite.nom}
                     </c:forEach>
                 </td>
-                <td><a href="/planetaForm/${planeta.idplaneta}">Modificar</a></td>
+                <td><a href="planetaForm/${planeta.idplaneta}">Modificar</a></td>
                 <td>
-                    <form action="/deletePlaneta" method="post">
+                    <form action="deletePlaneta" method="post">
                         <input type="hidden" name="idplaneta" value="${planeta.idplaneta}">
                         <input type="submit" value="Delete">
                     </form>

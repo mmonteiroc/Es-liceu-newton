@@ -40,7 +40,7 @@ public class SateliteFormController {
         satelite.setNom(nom);
 
         sateliteService.insertOrUpdate(satelite);
-        return new RedirectView("/planetas");
+        return new RedirectView("planetas");
     }
 
 }

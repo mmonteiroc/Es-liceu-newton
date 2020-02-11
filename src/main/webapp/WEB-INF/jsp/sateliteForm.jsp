@@ -24,7 +24,7 @@
 
 <main class="container">
 
-    <form action="/addSatelite" method="post">
+    <form action="addSatelite" method="post">
         <div class="form-row">
 
             <div class="form-group col-md-6">

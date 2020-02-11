@@ -17,14 +17,14 @@
 </head>
 <body>
 
-<c:import url="template/menu.jsp"></c:import>
+<c:import url="template/menu2DotsOut.jsp"></c:import>
 <h1>Comentarios del usuario: ${usuario.nom} ${usuario.cognoms}</h1>
 <ul>
     <c:forEach var="c" items="${Comentarios}">
         <li>
                 ${c.planetaUsuariPlanetas.nom} tiene el comentario: ${c.comentario}
 
-            <form action="/comentarios/delete" method="post">
+            <form action="../comentarios/delete" method="post">
                 <input type="hidden" name="idUsuario" value="${c.usuari.idusuari}">
                 <input type="hidden" name="idPlaneta" value="${c.planetaUsuariPlanetas.idplaneta}">
                 <input type="hidden" name="comentario" value="${c.comentario}">
