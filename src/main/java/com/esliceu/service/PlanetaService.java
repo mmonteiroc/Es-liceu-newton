@@ -1,7 +1,6 @@
 package com.esliceu.service;
 
 import com.esliceu.dao.PlanetaDao;
-import com.esliceu.model.Observacion;
 import com.esliceu.model.Planeta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,5 @@
 package com.esliceu.service;
 
-import com.esliceu.dao.PlanetaDao;
 import com.esliceu.dao.UserDao;
 import com.esliceu.model.Usuari;
 import org.springframework.beans.factory.annotation.Autowired;

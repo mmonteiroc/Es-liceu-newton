@@ -3,7 +3,6 @@ package com.esliceu.controller;
 import com.esliceu.model.Usuari;
 import com.esliceu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;

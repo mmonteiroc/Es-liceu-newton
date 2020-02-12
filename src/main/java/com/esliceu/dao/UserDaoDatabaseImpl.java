@@ -1,6 +1,5 @@
 package com.esliceu.dao;
 
-import com.esliceu.model.Satelite;
 import com.esliceu.model.Usuari;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -10,10 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
