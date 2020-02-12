@@ -113,7 +113,7 @@
             <h5 class="card-title justify-content-center d-flex mt-5 pt-5 mb-0">Es Liceu newton</h5>
 
             <div class="d-flex justify-content-center form_container">
-                <form action="login" method="post">
+                <form action="${pageContext.request.contextPath}/login" method="post">
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>

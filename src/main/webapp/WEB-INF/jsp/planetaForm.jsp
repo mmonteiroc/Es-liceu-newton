@@ -18,16 +18,12 @@
 </head>
 <body>
 
-<c:if test="${planeta==null}">
-    <c:import url="template/menu.jsp"></c:import>
-</c:if>
-<c:if test="${planeta!=null}">
-    <c:import url="template/menu2DotsOut.jsp"></c:import>
-</c:if>
+
+<c:import url="template/menu.jsp"></c:import>
 
 <main class="container">
 
-    <form action="${planeta!=null?".":""}./savePlaneta" method="post">
+    <form action="${pageContext.request.contextPath}/savePlaneta" method="post">
         <div class="form-row">
             <input type="hidden" name="idplaneta" value="${planeta.idplaneta}">
 
